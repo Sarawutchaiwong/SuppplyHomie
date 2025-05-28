@@ -19,7 +19,6 @@ const products = [
     price: '$39.99',
     image: 'https://majestic-home.co.th/wp-content/uploads/2021/06/WGT-140.png',
   },
-  ,
   {
     id: 4,
     name: 'ถังพลาสติกพีพี (PP Tank) รับผลิตถังเคมี ไลน์ชุบ บำบัดน้ำเสีย',
@@ -38,8 +37,6 @@ const products = [
     price: '$19.99',
     image: 'https://majestic-home.co.th/wp-content/uploads/2021/11/DT-P-XX-300x300.png',
   }
-
-
 ]
 
 export default function Home() {
