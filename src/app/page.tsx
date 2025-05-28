@@ -52,7 +52,7 @@ export default function Home() {
               <div key={product.id} className="bg-white rounded-lg shadow p-4">
                 <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded" />
                 <h4 className="text-black mt-4 text-lg font-semibold">{product.name}</h4>
-                <p className="text-green-600 font-bold">{product.price}</p>
+                <p className="text-blue-600 font-bold">{product.price}</p>
               </div>
             ))}
           </div>
