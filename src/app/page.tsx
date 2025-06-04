@@ -1,49 +1,32 @@
+'use client'
 import Head from 'next/head'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const products = [
-  {
-    id: 1,
-    name: 'HITACHI ปั๊มน้ำอัตโนมัติ ชนิดดูดน้ำลึก (ระบบเจ็ทคู่) 300 W รุ่น DT-P300XX(PJ)',
-    price: '$19.99',
-    image: 'https://majestic-home.co.th/wp-content/uploads/2021/11/DT-P-XX-300x300.png',
-  },
-  {
-    id: 2,
-    name: 'ถังพลาสติกพีพี (PP Tank) รับผลิตถังเคมี ไลน์ชุบ บำบัดน้ำเสีย',
-    price: '$49.99',
-    image: 'https://www.sungenn.com/wp-content/uploads/2024/08/woo_product_conicaltank_image-300x300.jpg',
-  },
-  {
-    id: 3,
-    name: 'WAVE WGT-140 ถังดักไขมันใต้ซิงค์/ใต้ดิน 140 L รุ่น WGT',
-    price: '$39.99',
-    image: 'https://majestic-home.co.th/wp-content/uploads/2021/06/WGT-140.png',
-  },
-  {
-    id: 4,
-    name: 'ถังพลาสติกพีพี (PP Tank) รับผลิตถังเคมี ไลน์ชุบ บำบัดน้ำเสีย',
-    price: '$49.99',
-    image: 'https://www.sungenn.com/wp-content/uploads/2024/08/woo_product_conicaltank_image-300x300.jpg',
-  },
-  {
-    id: 5,
-    name: 'WAVE WGT-140 ถังดักไขมันใต้ซิงค์/ใต้ดิน 140 L รุ่น WGT',
-    price: '$39.99',
-    image: 'https://majestic-home.co.th/wp-content/uploads/2021/06/WGT-140.png',
-  },
-  {
-    id: 6,
-    name: 'HITACHI ปั๊มน้ำอัตโนมัติ ชนิดดูดน้ำลึก (ระบบเจ็ทคู่) 300 W รุ่น DT-P300XX(PJ)',
-    price: '$19.99',
-    image: 'https://majestic-home.co.th/wp-content/uploads/2021/11/DT-P-XX-300x300.png',
-  }
-]
-
+interface DataType {
+  id : number;
+  name: string;
+  price: string;
+  image: string;
+}
 export default function Home() {
+
+  const[products, setProducts] = useState<DataType[]>([]);
+
+  useEffect(() => {
+    (async() => {
+      const products = await axios.get('/api/products');
+      if (products.data.data) {
+        setProducts(products.data.data);
+      }
+    })()
+  } , []);
+
+
   return (
     <>
       <Head>
-        <title>ShopEase - Home</title>
+        <title>SupplyHomie - Home</title>
       </Head>
 
       <header className="bg-white shadow-md">
@@ -65,7 +48,7 @@ export default function Home() {
 
         <section className="container mx-auto px-4 py-12">
           <h3 className="text-black text-2xl font-semibold mb-6">Featured Products</h3>
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 drop-shadow-lg">
             {products.map(product => (
               <div key={product.id} className="bg-white rounded-lg shadow p-4">
                 <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded" />
