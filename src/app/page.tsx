@@ -49,7 +49,7 @@ export default function Home() {
         </section>
 
         <section className="container mx-auto px-4 py-12">
-          <h3 className="text-white text-2xl font-semibold mb-6">Featured Products</h3>
+          <h3 className="text-black text-2xl font-semibold mb-6">Featured Products</h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 drop-shadow-lg cursor-pointer">
             {products.map(product => (
               <div key={product.id} className="bg-white rounded-lg shadow p-4 scale-100 hover:scale-105 transition-transform duration-300">
@@ -57,7 +57,12 @@ export default function Home() {
                 <h4 className="text-black mt-4 text-lg font-semibold">{product.name}</h4>
                 <p className="text-blue-600 font-bold">{product.price}</p>
                 <p className="text-gray-600 mt-2">{product.description}</p>
-                <p className="inline-flex items-center px-2 py-1 text-sm font-sm text-center text-white bg-blue-1000 rounded-lg hover:bg-blue-100 focus:ring-4 focus:outline-none focus:ring-blue-100 dark:bg-blue-400 dark:hover:bg-blue-700 dark:focus:ring-blue-800 scale-100 hover:scale-105 transition-transform duration-300">{product.category}</p>
+                <p
+                  className="inline-block mt-3 px-3 py-1 text-xs font-semibold text-white bg-blue-600 rounded-full shadow-sm
+                    hover:bg-blue-700 transition-colors duration-200"
+                >
+                  {product.category}
+                </p>
               </div>
             ))}
           </div>
