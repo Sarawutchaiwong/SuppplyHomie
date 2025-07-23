@@ -1,4 +1,5 @@
 import { PrismaClient } from '../src/generated/prisma';
+import { createHash } from 'crypto';
 
 const prisma = new PrismaClient();
 
@@ -114,7 +115,19 @@ async function main() {
   for (const product of products) {
     await prisma.products.create({ data: product });
   }
-  console.log('Seeded products!');
+
+  const password = 'password123';
+  const hashedPassword = createHash('sha256').update(password).digest('hex');
+
+  await prisma.users.create({
+    data: {
+      name: 'Test User',
+      email: 'test@example.com',
+      password: hashedPassword,
+    },
+  });
+
+  console.log('Seeded products and a test user!');
 }
 
 main()
