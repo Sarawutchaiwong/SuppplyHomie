@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Navbar from './components/Navbar';
 
 type Product = {
   id: string
@@ -13,12 +14,8 @@ type Product = {
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([])
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
-
     (async () => {
       const res = await axios.get('/api/products')
       if (res.data.data) {
@@ -29,31 +26,7 @@ export default function Home() {
 
   return (
     <>
-      <header className="bg-white dark:bg-slate-900 shadow-md">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-blue-600 dark:text-blue-400">SupplyHomie</h1>
-          <nav className="space-x-6">
-            <a href="#" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
-            <a href="#" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Shop</a>
-            <a href="#" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
-          </nav>
-
-          <div className="flex items-center space-x-4">
-            {isLoggedIn ? (
-              <a href="/profile" className="text-slate-700 dark:text-slate-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>
-              </a>
-            ) : (
-              <>
-                <a href="/login" className="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-500 dark:hover:bg-blue-600">Login</a>
-                <a href="/register" className="text-slate-700 bg-slate-200 hover:bg-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600">Register</a>
-              </>
-            )}
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="min-h-screen">
         <section className="text-center py-20 bg-white dark:bg-slate-900">

@@ -37,9 +37,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-slate-100 dark:bg-slate-900">
-      <div className="w-full max-w-md p-8 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-6">Login</h2>
+    <div className="flex items-center justify-center min-h-screen bg-slate-100 dark:bg-slate-900 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md p-6 sm:p-8 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-slate-900 dark:text-white mb-6">Login</h2>
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
             Email

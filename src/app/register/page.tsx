@@ -45,10 +45,9 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-        
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Register</h2>
+    <div className="flex items-center justify-center min-h-screen bg-slate-100 dark:bg-slate-900 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md p-6 sm:p-8 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-slate-900 dark:text-white mb-6">Register</h2>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Name
