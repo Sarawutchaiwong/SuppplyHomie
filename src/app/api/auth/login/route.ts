@@ -50,6 +50,6 @@ export async function POST(req: NextRequest) {
         console.log(err)
         return NextResponse.json({
             message : `Error ${err}`
-        })
+        }, { status: 500 })
     }
 }

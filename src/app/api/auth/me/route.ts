@@ -10,10 +10,10 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_KEY || 'your-secret-key');
+        const decoded = jwt.verify(token, process.env.JWT_KEY || 'your-secret-key') as { userId: string };
 
-        if (!decoded) {
-            return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+        if (!decoded || !decoded.userId) {
+            return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
         }
 
         const user = await prisma.users.findFirst({
